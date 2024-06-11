@@ -1,5 +1,3 @@
-
-
 def encode_ascii(string):
     string_ascii = [0]*len(string)
     
