@@ -1,3 +1,5 @@
+import binascii
+
 def decode_hdb3(encoded_string):
     binary_list = ['']*len(encoded_string)
     last_polarity = None
@@ -20,6 +22,13 @@ def decode_hdb3(encoded_string):
             binary_list[i] = '0'
 
     return ''.join(binary_list)
+
+
+def binary_to_ascii(message):
+    ascii_list = []
+    for i in range(0, len(message), 8):
+        ascii_list.append(chr(int(message[i:i+8], 2)))
+    return ''.join(ascii_list)
 
 
 input_strings = [
