@@ -30,7 +30,7 @@ def encode_hdb3(bits_string):
     # The previous 1 bit was '-'
     # The last violation bit was an even number of 1 bits ago
     next_polarity = '+'
-    ones_count = 1
+    ones_count = 0
     
     consecutive_zeros = 0
     encoded_list = ['']*len(bits_string)
