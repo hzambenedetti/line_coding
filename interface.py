@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import encode
 
 class Application:
     def __init__(self, root):
@@ -21,7 +22,7 @@ class Application:
         self.entry_message.grid(row=1, column=0, padx=10, pady=5)
         
         # Botão de criptografia
-        self.encrypt_button = ttk.Checkbutton(self.main_frame, text="Criptografia", command=self.encrypt_message)
+        self.encrypt_button = ttk.Checkbutton(self.main_frame, text="Ativar Criptografia", command=self.switch_encription)
         self.encrypt_button.grid(row=1, column=1, padx=10, pady=5)
         
         # Área para mostrar a mensagem codificada em binário
@@ -44,6 +45,9 @@ class Application:
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
         self.main_frame.grid_rowconfigure(4, weight=1)
+
+        #local variables
+        self.encrypt_message_var = False
         
     def encrypt_message(self):
         message = self.message.get()
@@ -63,9 +67,29 @@ class Application:
             self.ax.set_xticks(range(len(digital_signal)))
             self.canvas.draw()
     
+    def plot_signal(self, message):
+        signal = self.gen_signal(message)
+
+        self.ax.clear()
+        self.ax.grid()
+        self.ax.plot(signal, color='red', marker='o')
+        self.canvas.draw()
+        
+
+    def gen_signal(self, message):
+        binary_string = encode.encode_binary(message)
+        hdb3_string = encode.encode_hdb3(binary_string)
+        signal = encode.encoded_to_signal(hdb3_string)
+
+        return signal
+
+    def switch_encription(self):
+        self.encrypt_message_var = not self.encrypt_message_var
+        print(self.encrypt_message_var)
+
     def send_message(self):
-        # Função para enviar a mensagem (ainda não implementada)
-        pass
+        message = self.message.get()
+        self.plot_signal(message)
 
 if __name__ == "__main__":
     root = tk.Tk()
