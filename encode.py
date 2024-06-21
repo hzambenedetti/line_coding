@@ -65,12 +65,24 @@ def encode_hdb3(bits_string):
 
     return ''.join(encoded_list)
 
+def encoded_to_signal(message):
+    signal = [0]*len(message)
+    for i, char in enumerate(message):
+        if char == '+':
+            signal[i] = 1
+        elif char == '-':
+            signal[i] = -1
+    
+    return signal
+
 string ='1010000100001100001110000111100001010000' 
 expected ='+0-000-+000+-+-00-+-+000+-+-+-00-+0-+00+' 
 encoded = encode_hdb3(string).strip()
+signal = encoded_to_signal(encoded)
 
 print(encoded)
 print(expected)
+print(signal)
 
 print(len(encoded))
 print(len(expected))
