@@ -75,19 +75,19 @@ def encoded_to_signal(message):
     
     return signal
 
-string ='1010000100001100001110000111100001010000' 
-expected ='+0-000-+000+-+-00-+-+000+-+-+-00-+0-+00+' 
-encoded = encode_hdb3(string).strip()
-signal = encoded_to_signal(encoded)
+# string ='1010000100001100001110000111100001010000' 
+# expected ='+0-000-+000+-+-00-+-+000+-+-+-00-+0-+00+' 
+# encoded = encode_hdb3(string).strip()
+# signal = encoded_to_signal(encoded)
 
-print(encoded)
-print(expected)
-print(signal)
+# print(encoded)
+# print(expected)
+# print(signal)
 
-print(len(encoded))
-print(len(expected))
+# print(len(encoded))
+# print(len(expected))
 
-if encoded == expected: 
-    print('aaaa')
+# if encoded == expected: 
+#     print('aaaa')
 
 

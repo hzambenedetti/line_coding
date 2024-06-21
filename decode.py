@@ -31,25 +31,25 @@ def binary_to_ascii(message):
     return ''.join(ascii_list)
 
 
-input_strings = [
-    '+0−000−0+−+00+−+−00−000+',
-    '+0-000-+000+-+-00-+-+000+-+-+-00-+0-+00+',
-    '+-00-+00+00'
-]
+# input_strings = [
+#     '+0−000−0+−+00+−+−00−000+',
+#     '+0-000-+000+-+-00-+-+000+-+-+-00-+0-+00+',
+#     '+-00-+00+00'
+# ]
 
-expected_strings = [
-    '101000001100001100000001',
-    '1010000100001100001110000111100001010000',
-    '10000000000'
-]
+# expected_strings = [
+#     '101000001100001100000001',
+#     '1010000100001100001110000111100001010000',
+#     '10000000000'
+# ]
 
-i = 0
-for input, expected in zip(input_strings, expected_strings):
-    decoded = decode_hdb3(input).strip()
+# i = 0
+# for input, expected in zip(input_strings, expected_strings):
+#     decoded = decode_hdb3(input).strip()
 
-    print(f"\n TEST {i}\n")
-    print(decoded)
-    print(expected)
-    print()
-    if decoded == expected:
-        print("decoded == expected: SUCCESS")
+#     print(f"\n TEST {i}\n")
+#     print(decoded)
+#     print(expected)
+#     print()
+#     if decoded == expected:
+#         print("decoded == expected: SUCCESS")
