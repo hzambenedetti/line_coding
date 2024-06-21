@@ -31,11 +31,11 @@ class Application:
         self.binary_message_label.grid(row=3, column=0, padx=10, pady=5)
         
         # Gráfico para mostrar o sinal digital
-        self.figure, self.ax = plt.subplots(figsize=(20, 8))
+        self.figure, self.ax = plt.subplots(figsize=(10, 4))
         plt.grid()
         # self.ax.set_axis_off()
         self.canvas = FigureCanvasTkAgg(self.figure, master=self.main_frame)
-        self.canvas.get_tk_widget().grid(row=4, column=0, columnspan=5, padx=10, pady=5)
+        self.canvas.get_tk_widget().grid(row=4, column=0, columnspan=2, padx=10, pady=5)
         
         # Botão de enviar
         self.send_button = ttk.Button(self.main_frame, text="Enviar", command=self.send_message)
@@ -72,7 +72,8 @@ class Application:
 
         self.ax.clear()
         self.ax.grid()
-        self.ax.plot(signal, color='red', marker='o')
+        self.ax.step(range(len(signal)), signal ,color='red', marker = 'o')
+        self.ax.set_yticks([-1,0,1])
         self.canvas.draw()
         
 
@@ -89,7 +90,13 @@ class Application:
 
     def send_message(self):
         message = self.message.get()
+        bin_message = encode.encode_binary(message)
+        limited_message = self.limit_message(bin_message)
+        self.binary_message_label.config(text=bin_message)
         self.plot_signal(message)
+    
+    def limit_message(message):
+        pass
 
 if __name__ == "__main__":
     root = tk.Tk()
