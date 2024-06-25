@@ -33,4 +33,3 @@ def caesar_decrypt(text, shift):
             result += char
 
     return result
-

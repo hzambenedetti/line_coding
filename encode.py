@@ -72,7 +72,9 @@ def encoded_to_signal(message):
             signal[i] = 1
         elif char == '-':
             signal[i] = -1
-    
+
+    signal.insert(0.0)
+
     return signal
 
 # string ='1010000100001100001110000111100001010000' 

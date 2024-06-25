@@ -7,7 +7,7 @@ def start_client():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Connect to the server
-    client_socket.connect(('localhost', 65432))
+    client_socket.connect(('IP-SERVER', 65432))
 
     try:
         # Receive a message from the server
