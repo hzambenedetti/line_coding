@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import encode
+import server
 
 class Application:
     def __init__(self, root):
@@ -76,6 +77,7 @@ class Application:
     
     def plot_signal(self, message):
         signal = self.gen_signal(message)
+        signal.insert(0, 0)
 
         self.ax.clear()
         self.ax.grid()
@@ -106,6 +108,7 @@ class Application:
         self.binary_message_text.insert(tk.END, bin_message)
         self.binary_message_text.config(state=tk.DISABLED)
         self.plot_signal(message)
+        server.start_server(message)
     
     def limit_message(message):
         pass
